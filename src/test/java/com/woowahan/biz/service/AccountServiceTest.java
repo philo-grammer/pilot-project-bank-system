@@ -1,5 +1,7 @@
 package com.woowahan.biz.service;
 
+import static org.junit.Assert.assertEquals;
+
 import com.woowahan.biz.PilotProjectBankSystemApplication;
 import com.woowahan.biz.domain.Account;
 import org.junit.Test;
@@ -9,7 +11,6 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
 
 /**
  * Created by sykim on 2016. 4. 5..
