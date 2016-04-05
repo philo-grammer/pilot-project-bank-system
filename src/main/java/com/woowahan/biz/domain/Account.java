@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -26,6 +28,21 @@ public class Account {
 
     @Column(nullable = false, name = "PASSWORD")
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    private AccountStatus status;
+
+    /**
+     * 계좌삭제
+     */
+    public void delete() {
+
+        if(this.getStatus() == AccountStatus.DELETE) {
+            throw new RuntimeException("이미 삭제된 계좌입니다.");
+        }
+
+        this.setStatus(AccountStatus.DELETE);
+    }
 
 
 /*
