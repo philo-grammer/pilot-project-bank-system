@@ -12,7 +12,11 @@ buildscript {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'spring-boot' 
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+apply plugin: 'checkstyle'
+apply plugin: 'pmd'
+apply plugin: 'findbugs'
 
 jar {
 	baseName = 'pilot-project-bank-system'
@@ -30,11 +34,16 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-aop')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-data-rest')
+    compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	compile('org.projectlombok:lombok:1.16.6')
-	compile('org.springframework.boot:spring-boot-starter-web')
+
+    compile('com.mysema.querydsl:querydsl-jpa:3.6.9')
+    compile('com.mysema.querydsl:querydsl-apt:3.6.9')
+
 	runtime('com.h2database:h2')
-	testCompile('org.springframework.boot:spring-boot-starter-test') 
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
 }
 
 
@@ -45,6 +54,40 @@ eclipse {
 	}
 }
 
+checkstyle {
+    toolVersion = '6.12'
+    configFile = file("${project.rootDir}/config/checkstyle/woowa_checks.xml")
+    sourceSets = [sourceSets.main, sourceSets.test]
+}
+
+checkstyleMain {
+    outputs.upToDateWhen { false }
+}
+
+checkstyleTest {
+    outputs.upToDateWhen { false }
+}
+
+pmd {
+    ruleSets = [
+            "java-basic",
+            "java-braces"
+    ]
+
+    sourceSets = [sourceSets.main, sourceSets.test]
+}
+
+findbugs {
+    sourceSets = [sourceSets.main, sourceSets.test]
+}
+
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
 task wrapper(type: Wrapper) {
-	gradleVersion = '2.9'
+	gradleVersion = '2.12'
 }
