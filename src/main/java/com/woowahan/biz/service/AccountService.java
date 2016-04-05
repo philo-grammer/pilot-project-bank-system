@@ -40,4 +40,9 @@ public class AccountService {
     public List<Account> findAccounts() {
         return accountRepository.findAll();
     }
+
+    public void deleteAccount(Long accountId) {
+        Account account = accountRepository.findOne(accountId);
+        account.delete();
+    }
 }

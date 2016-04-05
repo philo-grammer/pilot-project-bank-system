@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import com.woowahan.biz.PilotProjectBankSystemApplication;
 import com.woowahan.biz.domain.Account;
+import com.woowahan.biz.domain.AccountStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,26 @@ public class AccountServiceTest {
 
         //Then
         assertEquals(account, accountService.findOne(accountId));
+
+    }
+
+    @Test
+    public void testDeleteAccount() throws Exception {
+
+        //Given
+        Account account = new Account();
+        account.setDepositorId("philo-grammer");
+        account.setPassword("1234");
+
+        //When
+        Long accountId = accountService.registerAccount(account);
+        accountService.deleteAccount(accountId);
+
+        //Then
+        Account deletedAccount = accountService.findOne(accountId);
+
+        assertEquals("계좌 삭제시 상태는 DELETE 이다.",
+                AccountStatus.DELETE, deletedAccount.getStatus());
 
     }
 }
