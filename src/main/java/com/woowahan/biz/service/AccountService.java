@@ -1,6 +1,7 @@
 package com.woowahan.biz.service;
 
 import com.woowahan.biz.domain.Account;
+import com.woowahan.biz.domain.AccountStatus;
 import com.woowahan.biz.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class AccountService {
      */
     public Long registerAccount(Account account) {
         //중복검사
+        account.setStatus(AccountStatus.LIVE);
         accountRepository.save(account);
         return account.getId();
     }
@@ -30,7 +32,7 @@ public class AccountService {
     /**
      * 개별조회
      */
-    public Account findOne(Long accountId) {
+    public Account findAccount(Long accountId) {
         return accountRepository.findOne(accountId);
     }
 

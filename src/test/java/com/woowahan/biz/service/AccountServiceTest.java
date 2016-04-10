@@ -36,7 +36,7 @@ public class AccountServiceTest {
         Long accountId = accountService.registerAccount(account);
 
         //Then
-        assertEquals(account, accountService.findOne(accountId));
+        assertEquals(account, accountService.findAccount(accountId));
 
     }
 
@@ -53,7 +53,7 @@ public class AccountServiceTest {
         accountService.deleteAccount(accountId);
 
         //Then
-        Account deletedAccount = accountService.findOne(accountId);
+        Account deletedAccount = accountService.findAccount(accountId);
 
         assertEquals("계좌 삭제시 상태는 DELETE 이다.",
                 AccountStatus.DELETE, deletedAccount.getStatus());
