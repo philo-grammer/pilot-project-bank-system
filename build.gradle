@@ -46,6 +46,10 @@ dependencies {
     testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
 }
 
+configurations {
+	all*.exclude group: 'commons-logging', module: 'commons-logging'
+	all*.exclude group: 'log4j', module: 'log4j'
+}
 
 eclipse {
 	classpath {
