@@ -1,7 +1,6 @@
 package com.woowahan.biz.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,9 +12,8 @@ import javax.persistence.Id;
 /**
  * Created by sykim on 2016. 4. 3..
  */
+@Data
 @Entity
-@Getter
-@Setter
 public class Account {
 
     @Id
