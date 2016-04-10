@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,6 +52,13 @@ public class AccountController {
         System.out.println("account = " + account);
         logger.info("account = {}", account);
         return "OK";
+    }
+
+    /** 계좌삭제 */
+    @RequestMapping(value = "{accountId}/delete")
+    public String delete(@PathVariable("accountId") Long accountId) {
+        accountService.deleteAccount(accountId);
+        return "redirect:/accounts";
     }
 
 }
