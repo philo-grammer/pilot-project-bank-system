@@ -34,6 +34,7 @@ public class AccountController {
     @RequestMapping(method = GET)
     public List<Account> accounts() {
         List<Account> accounts = accountService.findAccounts();
+        logger.info("Get all accounts");
         return accounts;
     }
 
@@ -41,6 +42,7 @@ public class AccountController {
     @RequestMapping(value = "{accountId}", method = GET)
     public Account getAccount(@PathVariable("accountId") Long accountId) {
         Account account = accountService.findAccount(accountId);
+        logger.info("Get an account : {}", account);
         return account;
     }
 
@@ -49,8 +51,7 @@ public class AccountController {
     @ResponseStatus(HttpStatus.CREATED)
     public String register(@RequestBody Account account) {
         accountService.registerAccount(account);
-        System.out.println("account = " + account);
-        logger.info("account = {}", account);
+        logger.info("Register account : {}", account);
         return "OK";
     }
 
@@ -58,6 +59,8 @@ public class AccountController {
     @RequestMapping(value = "{accountId}/delete")
     public String delete(@PathVariable("accountId") Long accountId) {
         accountService.deleteAccount(accountId);
+        Account account = accountService.findAccount(accountId);
+        logger.info("Delete account : {}", account);
         return "redirect:/accounts";
     }
 
