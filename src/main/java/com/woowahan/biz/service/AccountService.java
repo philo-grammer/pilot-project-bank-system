@@ -24,6 +24,7 @@ public class AccountService {
      */
     public Long registerAccount(Account account) {
         //중복검사
+        account.setBalance(0L);
         account.setStatus(AccountStatus.LIVE);
         accountRepository.save(account);
         return account.getId();
@@ -43,6 +44,9 @@ public class AccountService {
         return accountRepository.findAll();
     }
 
+    /**
+     * 계좌삭제
+     */
     public void deleteAccount(Long accountId) {
         Account account = accountRepository.findOne(accountId);
         account.delete();
