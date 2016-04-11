@@ -27,6 +27,9 @@ public class Account {
     @Column(nullable = false, name = "PASSWORD")
     private String password;
 
+    @Column(nullable = false, name = "BALANCE")
+    private Long balance;
+
     @Enumerated(EnumType.STRING)
     private AccountStatus status;
 
