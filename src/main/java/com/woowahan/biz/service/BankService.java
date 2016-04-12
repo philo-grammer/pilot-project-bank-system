@@ -26,4 +26,18 @@ public class BankService {
         account.setBalance(sumAmount);
         return accountRepository.save(account);
     }
+
+    /**
+     * 출금
+     */
+    public Account withdrawal(Long accountId, Long amount) {
+        Account account = accountRepository.findOne(accountId);
+        Long balance = account.getBalance();
+
+        //TODO : 유효성체크(잔액이 출금금액보다 적어야한다.)
+
+        Long totalAmount = balance - amount;
+        account.setBalance(totalAmount);
+        return accountRepository.save(account);
+    }
 }

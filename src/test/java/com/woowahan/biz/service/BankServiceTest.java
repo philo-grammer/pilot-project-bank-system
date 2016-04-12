@@ -42,4 +42,21 @@ public class BankServiceTest {
         assertEquals("입금액이 더해져야 한다.",
                 Long.valueOf(13000L), afterAccount.getBalance());
     }
+
+    @Test
+    public void testWithdrawal() throws Exception {
+        //Given
+        Account account = new Account();
+        account.setDepositorId("philo-grammer");
+        account.setPassword("12345");
+        Long accountId = accountService.registerAccount(account);
+        bankService.deposit(accountId, 13000L);
+
+        //When
+        Account afterAccount = bankService.withdrawal(accountId, 3000L);
+
+        //Then
+        assertEquals("출금액이 차감되어야 한다.",
+                Long.valueOf(10000L), afterAccount.getBalance());
+    }
 }

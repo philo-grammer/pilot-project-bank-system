@@ -23,12 +23,23 @@ public class BankController {
     /**
      * 입금
      */
-    @RequestMapping(method = POST)
+    @RequestMapping(value = "/deposit",method = POST)
     public String deposit(@RequestParam("accountId") Long accountId,
                           @RequestParam("depositAmount") Long depositAmount) {
         bankService.deposit(accountId, depositAmount);
         log.info("deposit(accountId:{}, depositAmount:{})",
                 accountId, depositAmount);
+        return "OK";
+    }
+
+    /**
+     * 출금
+     */
+    @RequestMapping(value = "/withdrawal", method = POST)
+    public String withdrawal(@RequestParam("accountId") Long accountId,
+                             @RequestParam("amount") Long amount) {
+        bankService.withdrawal(accountId, amount);
+        log.info("withdrawal(accountId:{}, amount:{})", accountId, amount);
         return "OK";
     }
 }
