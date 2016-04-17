@@ -55,7 +55,7 @@ public class AccountController {
     @ResponseStatus(HttpStatus.CREATED)
     public String register(@RequestBody Account account) {
         accountService.registerAccount(account);
-        log.info("Register account : {}", account);
+        log.info("Register account : {}", account.getDepositorId());
         return "OK";
     }
 
