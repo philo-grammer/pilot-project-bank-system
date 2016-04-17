@@ -24,7 +24,7 @@ public class AccountService {
      */
     public Long registerAccount(Account account) {
         //중복검사
-        account.setBalance(0L);
+        account.setBalance(10000L);
         account.setStatus(AccountStatus.LIVE);
         accountRepository.save(account);
         return account.getId();

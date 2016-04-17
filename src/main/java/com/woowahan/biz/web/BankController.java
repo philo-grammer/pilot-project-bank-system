@@ -1,12 +1,18 @@
 package com.woowahan.biz.web;
 
+import com.woowahan.biz.domain.accountDetail.AccountDetail;
+import com.woowahan.biz.dto.AccountDetailDto;
 import com.woowahan.biz.service.BankService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
@@ -24,11 +30,12 @@ public class BankController {
      * 입금
      */
     @RequestMapping(value = "/deposit",method = POST)
-    public String deposit(@RequestParam("accountId") Long accountId,
-                          @RequestParam("depositAmount") Long depositAmount) {
-        bankService.deposit(accountId, depositAmount);
-        log.info("deposit(accountId:{}, depositAmount:{})",
-                accountId, depositAmount);
+    public String deposit(@RequestParam("fromAccountId") Long fromAccountId,
+                          @RequestParam("toAccountId") Long toAccountId,
+                          @RequestParam("amount") Long amount) {
+        bankService.transfer(fromAccountId, toAccountId, amount);
+        log.info("deposit(fromAccountId:{}, toAccountId:{}, depositAmount:{})",
+                fromAccountId, toAccountId, amount);
         return "OK";
     }
 
@@ -36,10 +43,24 @@ public class BankController {
      * 출금
      */
     @RequestMapping(value = "/withdrawal", method = POST)
-    public String withdrawal(@RequestParam("accountId") Long accountId,
+    public String withdrawal(@RequestParam("fromAccountId") Long fromAccountId,
+                             @RequestParam("toAccountId") Long toAccountId,
                              @RequestParam("amount") Long amount) {
-        bankService.withdrawal(accountId, amount);
-        log.info("withdrawal(accountId:{}, amount:{})", accountId, amount);
+        bankService.transfer(toAccountId, fromAccountId, amount);
+        log.info("withdrawal(toAccountId:{}, fromAccountId:{}, amount:{})",
+                toAccountId, fromAccountId, amount);
         return "OK";
+    }
+
+    /**
+     * 조회
+     */
+    @RequestMapping(value = "{accountId}", method = GET)
+    public AccountDetailDto getAccountDetails(
+            @PathVariable("accountId") Long accountId) {
+        List<AccountDetail> details = bankService.getAccountDetails(accountId);
+        Long totalCount = (long) details.size();
+        Long balance = details.get(0).getAccount().getBalance();
+        return new AccountDetailDto(totalCount, balance);
     }
 }
