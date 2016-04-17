@@ -1,9 +1,9 @@
 package com.woowahan.biz.service;
 
 import com.woowahan.biz.domain.Account;
-import com.woowahan.biz.domain.accountDetail.AccountDetail;
-import com.woowahan.biz.domain.accountDetail.Deposit;
-import com.woowahan.biz.domain.accountDetail.Withdrawal;
+import com.woowahan.biz.domain.accountdetail.AccountDetail;
+import com.woowahan.biz.domain.accountdetail.Deposit;
+import com.woowahan.biz.domain.accountdetail.Withdrawal;
 import com.woowahan.biz.repository.AccountDetailRepository;
 import com.woowahan.biz.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;

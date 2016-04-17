@@ -1,7 +1,7 @@
 package com.woowahan.biz.repository;
 
 import com.woowahan.biz.domain.Account;
-import com.woowahan.biz.domain.accountDetail.AccountDetail;
+import com.woowahan.biz.domain.accountdetail.AccountDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

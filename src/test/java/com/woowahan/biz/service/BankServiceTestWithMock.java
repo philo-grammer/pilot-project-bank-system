@@ -1,9 +1,13 @@
 package com.woowahan.biz.service;
 
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.when;
+
 import com.woowahan.biz.domain.Account;
-import com.woowahan.biz.domain.accountDetail.AccountDetail;
-import com.woowahan.biz.domain.accountDetail.Deposit;
-import com.woowahan.biz.domain.accountDetail.Withdrawal;
+import com.woowahan.biz.domain.accountdetail.AccountDetail;
+import com.woowahan.biz.domain.accountdetail.Deposit;
+import com.woowahan.biz.domain.accountdetail.Withdrawal;
 import com.woowahan.biz.repository.AccountDetailRepository;
 import com.woowahan.biz.repository.AccountRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -16,10 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.isA;
-import static org.mockito.Mockito.when;
 
 /**
  * Created by sykim on 2016. 4. 15..
@@ -72,7 +72,8 @@ public class BankServiceTestWithMock {
         Account dissaver = Account.register("dissaver", "3456")
 ;
         AccountDetail detailDeposit = new Deposit(depositor, myAccount ,3000L);
-        AccountDetail detailWithdrawal = new Withdrawal(myAccount, dissaver, 1000L);
+        AccountDetail detailWithdrawal =
+                new Withdrawal(myAccount, dissaver, 1000L);
 
         List<AccountDetail> mockAccountDetails = new ArrayList<>();
         mockAccountDetails.add(detailDeposit);

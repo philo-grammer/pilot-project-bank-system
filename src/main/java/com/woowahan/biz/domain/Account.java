@@ -1,8 +1,8 @@
 package com.woowahan.biz.domain;
 
-import com.woowahan.biz.domain.accountDetail.AccountDetail;
-import com.woowahan.biz.domain.accountDetail.Deposit;
-import com.woowahan.biz.domain.accountDetail.Withdrawal;
+import com.woowahan.biz.domain.accountdetail.AccountDetail;
+import com.woowahan.biz.domain.accountdetail.Deposit;
+import com.woowahan.biz.domain.accountdetail.Withdrawal;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -12,9 +12,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.List;
 import javax.persistence.Table;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by sykim on 2016. 4. 3..

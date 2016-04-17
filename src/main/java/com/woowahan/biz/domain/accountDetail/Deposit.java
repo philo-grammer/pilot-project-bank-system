@@ -1,11 +1,10 @@
-package com.woowahan.biz.domain.accountDetail;
+package com.woowahan.biz.domain.accountdetail;
 
 import com.woowahan.biz.domain.Account;
 import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 /**
@@ -25,7 +24,14 @@ public class Deposit extends AccountDetail {
 
     }
 
+    /**
+     *
+     * @param fromAccount
+     * @param toAccount
+     * @param depositAmount
+     */
     public Deposit(Account fromAccount, Account toAccount, Long depositAmount) {
+        super();
         this.setAccount(toAccount);
         this.depositor = fromAccount;
         this.depositAmount = depositAmount;

@@ -1,4 +1,4 @@
-package com.woowahan.biz.domain.accountDetail;
+package com.woowahan.biz.domain.accountdetail;
 
 import com.woowahan.biz.domain.Account;
 import lombok.AllArgsConstructor;
@@ -14,8 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.util.Date;
+import javax.persistence.TemporalType;
 
 /**
  * Created by sykim on 2016. 4. 14..

@@ -1,4 +1,4 @@
-package com.woowahan.biz.domain.accountDetail;
+package com.woowahan.biz.domain.accountdetail;
 
 import com.woowahan.biz.domain.Account;
 import lombok.Data;
@@ -23,7 +23,16 @@ public class Withdrawal extends AccountDetail {
 
     }
 
-    public Withdrawal(Account fromAccount, Account toAccount, Long withdrawalAmount) {
+    /**
+     *
+     * @param fromAccount
+     * @param toAccount
+     * @param withdrawalAmount
+     */
+    public Withdrawal(Account fromAccount,
+                      Account toAccount,
+                      Long withdrawalAmount) {
+        super();
         this.setAccount(fromAccount);
         this.dissaver = toAccount;
         this.withdrawalAmount = withdrawalAmount;

@@ -1,8 +1,10 @@
 package com.woowahan.biz.service;
 
+import static org.junit.Assert.assertEquals;
+
 import com.woowahan.biz.PilotProjectBankSystemApplication;
 import com.woowahan.biz.domain.Account;
-import com.woowahan.biz.domain.accountDetail.AccountDetail;
+import com.woowahan.biz.domain.accountdetail.AccountDetail;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,8 +14,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by sykim on 2016. 4. 11..
@@ -35,7 +35,7 @@ public class BankServiceTest {
 
         // Given
         Account fromAccount = Account.register("fromAccount", "2345");
-        Account toAccount = Account.register("toAccount","1234");
+        Account toAccount = Account.register("toAccount", "1234");
 
         Long fromAccountId = accountService.registerAccount(fromAccount);
         Long toAccountId = accountService.registerAccount(toAccount);
@@ -59,7 +59,7 @@ public class BankServiceTest {
 
         // Given
         Account fromAccount = Account.register("fromAccount", "2345");
-        Account toAccount = Account.register("toAccount","1234");
+        Account toAccount = Account.register("toAccount", "1234");
 
         Long fromAccountId = accountService.registerAccount(fromAccount);
         Long toAccountId = accountService.registerAccount(toAccount);

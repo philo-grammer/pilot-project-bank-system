@@ -1,6 +1,9 @@
 package com.woowahan.biz.web;
 
-import com.woowahan.biz.domain.accountDetail.AccountDetail;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
+import com.woowahan.biz.domain.accountdetail.AccountDetail;
 import com.woowahan.biz.dto.AccountDetailDto;
 import com.woowahan.biz.service.BankService;
 import lombok.extern.slf4j.Slf4j;
@@ -11,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 /**
  * Created by sykim on 2016. 4. 11..
